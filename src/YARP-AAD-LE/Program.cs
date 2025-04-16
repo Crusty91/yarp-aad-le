@@ -24,7 +24,7 @@ if (isKeyVaultConfigured)
 
 builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
-var isAzureADConfigured = builder.Configuration.GetSection("AzureAd").Value != null;
+var isAzureADConfigured = builder.Configuration.GetSection("AzureAd").Exists();
 if (isAzureADConfigured)
 {
     builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration);
